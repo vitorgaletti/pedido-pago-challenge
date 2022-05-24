@@ -11,6 +11,7 @@ export function Header() {
       flexDirection={['row-reverse', 'row']}
       justifyContent={['flex-end', 'space-between']}
       gap={['4.937rem', '0']}
+      borderBottom="1px solid #e6e6e6"
     >
       <Box
         borderRight={['none', '1px solid var(--gray)']}
@@ -46,10 +47,20 @@ export function Header() {
           outline="none"
         />
         <Flex direction="column" display={['none', 'flex']}>
-          <Text fontWeight="600" fontSize="sm" color="var(--neutral-black)">
+          <Text
+            as="p"
+            fontWeight="600"
+            fontSize="sm"
+            color="var(--neutral-black)"
+          >
             Luiz Zlochevsky
           </Text>
-          <Text fontWeight="400" fontSize="xs" color="var(--neutral-5)">
+          <Text
+            as="span"
+            fontWeight="400"
+            fontSize="xs"
+            color="var(--neutral-5)"
+          >
             meus dados
           </Text>
         </Flex>

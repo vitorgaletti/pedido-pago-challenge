@@ -7,8 +7,9 @@ export const GlobalStyles = css`
     --neutral-black: #34423d;
     --neutral-5: #587169;
     --neutral-3: #a3b8b0;
-    --neutral-2: #CAD6D1
+    --neutral-2: #cad6d1;
     --feedback-success: #b5f1dd;
+    --primary-color: #22e0a1;
   }
 
   * {
