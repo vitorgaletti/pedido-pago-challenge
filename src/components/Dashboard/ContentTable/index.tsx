@@ -9,9 +9,10 @@ import { THeadTable } from './THeadTable';
 
 interface ContentTableProps {
   employees: Employee[];
+  search: string;
 }
 
-export function ContentTable({ employees }: ContentTableProps) {
+export function ContentTable({ employees, search }: ContentTableProps) {
   const [quantityPerPage, setQuantityPerPage] = useState(6);
   const [currentPage, setCurrentPage] = useState(1);
   return (
@@ -25,49 +26,34 @@ export function ContentTable({ employees }: ContentTableProps) {
         Listagem de colaboradores
       </Heading>
       <TableContainer width="100%" maxWidth="56.375rem">
-        <Box
-          h="100%"
-          overflowY="auto"
-          css={{
-            '&::-webkit-scrollbar': {
-              width: '5px'
-            },
-            '&::-webkit-scrollbar-track': {
-              width: '5px'
-            },
-            '&::-webkit-scrollbar-thumb': {
-              background: 'var(--neutral-2)',
-              borderRadius: '24px'
-            }
+        <Table
+          width="100%"
+          variant="unstyled"
+          style={{
+            borderCollapse: 'separate',
+            borderSpacing: '0'
           }}
         >
-          <Table
-            width="100%"
-            variant="unstyled"
-            style={{
-              borderCollapse: 'separate',
-              borderSpacing: '0'
-            }}
-          >
-            <Thead>
-              <Tr>
-                <THeadTable group="Nome completo" />
-                <THeadTable group="Departamento" padding={'1rem 1rem 1rem 0'} />
-                <THeadTable group="Cargo" padding={'1rem 1rem 1rem 0'} />
-                <THeadTable group="Unidade" padding={'1rem 1rem 1rem 0'} />
-                <THeadTable group="Status" padding={'1rem 1rem 1rem 0'} />
-                <THeadTable group="" padding={'1rem 1rem 1rem 0'} />
-              </Tr>
-            </Thead>
-            <Tbody h="100%" overflowY="auto">
-              <TBodyTable
-                employees={employees}
-                quantityPerPage={quantityPerPage}
-                currentPage={currentPage}
-              />
-            </Tbody>
-          </Table>
-        </Box>
+          <Thead>
+            <Tr>
+              <THeadTable group="Nome completo" />
+              <THeadTable group="Departamento" padding={'1rem 1rem 1rem 0'} />
+              <THeadTable group="Cargo" padding={'1rem 1rem 1rem 0'} />
+              <THeadTable group="Unidade" padding={'1rem 1rem 1rem 0'} />
+              <THeadTable group="Status" padding={'1rem 1rem 1rem 0'} />
+              <THeadTable group="" padding={'1rem 1rem 1rem 0'} />
+            </Tr>
+          </Thead>
+          <Tbody>
+            <TBodyTable
+              employees={employees}
+              quantityPerPage={quantityPerPage}
+              currentPage={currentPage}
+              search={search}
+              onHandlePage={setCurrentPage}
+            />
+          </Tbody>
+        </Table>
       </TableContainer>
       <Pagination
         employees={employees}

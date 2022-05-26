@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Employee } from '../../../../pages';
 import { Button, Flex, Select, Stack, Text } from '@chakra-ui/react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';

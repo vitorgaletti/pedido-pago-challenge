@@ -26,7 +26,7 @@ export default function Home({ employees }: HomeProps) {
       <Container
         w="100%"
         maxW="104rem"
-        h="100vh"
+        h="100%"
         bg="var(--gray)"
         float="right"
         borderLeft="1px solid #EAEFED;"
@@ -34,14 +34,7 @@ export default function Home({ employees }: HomeProps) {
         filter=" drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))"
         overflow="hidden"
       >
-        <Flex
-          flexDirection="column"
-          w="100%"
-          h="100vh"
-          pt="14"
-          pb="20"
-          marginBottom="5rem"
-        >
+        <Flex flexDirection="column" w="100%" h="100%" pt="14" pb="3.125rem">
           <Heading
             as="h2"
             w="59.75rem"
@@ -61,7 +54,7 @@ export default function Home({ employees }: HomeProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async context => {
+export const getServerSideProps: GetServerSideProps = async () => {
   try {
     const response = await api.get('/agents');
     const data = await response.data.items;

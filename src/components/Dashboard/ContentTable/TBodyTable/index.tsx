@@ -1,4 +1,5 @@
 import { Avatar, Button, Flex, Td, Text, Tr } from '@chakra-ui/react';
+import { useMemo } from 'react';
 import { FiMoreVertical } from 'react-icons/fi';
 import { Employee } from '../../../../pages';
 
@@ -6,14 +7,26 @@ interface TBodyTableProps {
   employees: Employee[];
   quantityPerPage: number;
   currentPage: number;
+  search: string;
+  onHandlePage: (currentPage: number) => void;
 }
 
 export function TBodyTable({
   employees,
   quantityPerPage,
-  currentPage
+  currentPage,
+  search,
+  onHandlePage
 }: TBodyTableProps) {
-  const employessFiltered = [...employees].slice(
+  const filteredEmployess = useMemo(() => {
+    const lowerCaseSearch = search.toLowerCase();
+    onHandlePage(1);
+    return employees.filter(employee =>
+      employee.name.toLowerCase().includes(lowerCaseSearch)
+    );
+  }, [search, employees]);
+
+  const employessPerPage = filteredEmployess.slice(
     (currentPage - 1) * quantityPerPage,
     currentPage * quantityPerPage
   );
@@ -21,7 +34,7 @@ export function TBodyTable({
   return (
     <>
       {employees &&
-        employessFiltered.map(employee => (
+        employessPerPage.map(employee => (
           <Tr key={employee.agent_id}>
             <Td
               padding="1rem"
@@ -119,6 +132,18 @@ export function TBodyTable({
             </Td>
           </Tr>
         ))}
+      {filteredEmployess.length === 0 && (
+        <Tr>
+          <Td
+            fontWeight="600"
+            fontSize="sm"
+            color="var(--neutral-5)"
+            lineHeight="17px"
+          >
+            Colaborador não encontrado
+          </Td>
+        </Tr>
+      )}
     </>
   );
 }
