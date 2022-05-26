@@ -1,16 +1,14 @@
-import { Heading, textDecoration } from '@chakra-ui/react';
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  TableContainer
-} from '@chakra-ui/react';
-import { ThTable } from './ThTable';
+import { Heading } from '@chakra-ui/react';
+import { Table, Thead, Tbody, Tr, TableContainer } from '@chakra-ui/react';
+import { Employee } from '../../../pages';
+import { TBodyTable } from './TBodyTable';
+import { THeadTable } from './THeadTable';
 
-export function ContentTable() {
+interface ContentTableProps {
+  employees: Employee[];
+}
+
+export function ContentTable({ employees }: ContentTableProps) {
   return (
     <>
       <Heading
@@ -26,52 +24,22 @@ export function ContentTable() {
           width="100%"
           variant="unstyled"
           style={{
-            borderCollapse: 'collapse',
+            borderCollapse: 'separate',
             borderSpacing: '0'
           }}
         >
           <Thead>
-            <Tr
-              style={{
-                border: '1px solid #CAD6D1'
-              }}
-            >
-              <ThTable group="Nome Completo" />
-              <ThTable group="Departamento" />
-              <ThTable group="Cargo" />
-              <ThTable group="Unidade" />
-              <ThTable group="Status" />
+            <Tr>
+              <THeadTable group="Nome completo" />
+              <THeadTable group="Departamento" padding={'1rem 1rem 1rem 0'} />
+              <THeadTable group="Cargo" padding={'1rem 1rem 1rem 0'} />
+              <THeadTable group="Unidade" padding={'1rem 1rem 1rem 0'} />
+              <THeadTable group="Status" padding={'1rem 1rem 1rem 0'} />
+              <THeadTable group="" padding={'1rem 1rem 1rem 0'} />
             </Tr>
           </Thead>
           <Tbody>
-            <Tr>
-              <Td>inches</Td>
-              <Td>millimetres (mm)</Td>
-              <Td>25.4</Td>
-              <Td>25.4</Td>
-              <Td>25.4</Td>
-            </Tr>
-            <Tr>
-              <Td>feet</Td>
-              <Td>centimetres (cm)</Td>
-              <Td>30.48</Td>
-              <Td>30.48</Td>
-              <Td>30.48</Td>
-            </Tr>
-            <Tr>
-              <Td>yards</Td>
-              <Td>metres (m)</Td>
-              <Td>0.91444</Td>
-              <Td>0.91444</Td>
-              <Td>0.91444</Td>
-            </Tr>
-            <Tr>
-              <Td>yards</Td>
-              <Td>metres (m)</Td>
-              <Td>0.91444</Td>
-              <Td>0.91444</Td>
-              <Td>0.91444</Td>
-            </Tr>
+            <TBodyTable employees={employees} />
           </Tbody>
         </Table>
       </TableContainer>
