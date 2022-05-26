@@ -4,13 +4,24 @@ import { Employee } from '../../../../pages';
 
 interface TBodyTableProps {
   employees: Employee[];
+  quantityPerPage: number;
+  currentPage: number;
 }
 
-export function TBodyTable({ employees }: TBodyTableProps) {
+export function TBodyTable({
+  employees,
+  quantityPerPage,
+  currentPage
+}: TBodyTableProps) {
+  const employessFiltered = [...employees].slice(
+    (currentPage - 1) * quantityPerPage,
+    currentPage * quantityPerPage
+  );
+
   return (
     <>
       {employees &&
-        employees.map(employee => (
+        employessFiltered.map(employee => (
           <Tr key={employee.agent_id}>
             <Td
               padding="1rem"

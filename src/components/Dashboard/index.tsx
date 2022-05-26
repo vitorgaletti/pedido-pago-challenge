@@ -4,7 +4,7 @@ import { SearchFilter } from './SearchFilter';
 import { Tab } from './Tab';
 
 import { Employee } from '../../pages/index';
-import { Pagination } from '../Pagination';
+
 interface DashboardProps {
   employees: Employee[];
 }
@@ -31,7 +31,6 @@ export function Dashboard({ employees }: DashboardProps) {
       <Tab />
       <SearchFilter />
       <ContentTable employees={employees} />
-      <Pagination />
     </Flex>
   );
 }

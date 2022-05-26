@@ -1,9 +1,23 @@
 import { Container, Flex, Heading } from '@chakra-ui/react';
-import type { NextPage } from 'next';
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { Dashboard } from '../components/Dashboard';
+import { api } from '../service/api';
 
-const Home: NextPage = () => {
+export interface Employee {
+  agent_id: number;
+  name: string;
+  image: string;
+  department: string;
+  branch: string;
+  role: string;
+  status: string;
+}
+interface HomeProps {
+  employees: Employee[];
+}
+
+export default function Home({ employees }: HomeProps) {
   return (
     <>
       <Head>
@@ -18,14 +32,15 @@ const Home: NextPage = () => {
         borderLeft="1px solid #EAEFED;"
         boxShadow="0px 4px 8px rgba(165, 171, 179, 0.16);"
         filter=" drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))"
+        overflow="hidden"
       >
         <Flex
           flexDirection="column"
           w="100%"
-          h="100%"
+          h="100vh"
           pt="14"
           pb="20"
-          gap="1.5rem"
+          marginBottom="5rem"
         >
           <Heading
             as="h2"
@@ -38,11 +53,27 @@ const Home: NextPage = () => {
           >
             Organização
           </Heading>
-          <Dashboard />
+
+          <Dashboard employees={employees} />
         </Flex>
       </Container>
     </>
   );
-};
+}
 
-export default Home;
+export const getServerSideProps: GetServerSideProps = async context => {
+  try {
+    const response = await api.get('/agents');
+    const data = await response.data.items;
+
+    return {
+      props: {
+        employees: data
+      }
+    };
+  } catch (error) {
+    return {
+      notFound: true
+    };
+  }
+};

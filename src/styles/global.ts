@@ -5,9 +5,10 @@ export const GlobalStyles = css`
     --white: #ffffff;
     --gray: #eaefed;
     --neutral-black: #34423d;
-    --neutral-5: #587169;
-    --neutral-3: #a3b8b0;
     --neutral-2: #cad6d1;
+    --neutral-3: #a3b8b0;
+    --neutral-4: #709085;
+    --neutral-5: #587169;
     --feedback-success: #b5f1dd;
     --primary-color: #22e0a1;
   }
