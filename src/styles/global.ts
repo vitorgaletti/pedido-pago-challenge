@@ -9,6 +9,7 @@ export const GlobalStyles = css`
     --neutral-3: #a3b8b0;
     --neutral-4: #709085;
     --neutral-5: #587169;
+    --neutral-6: #465953;
     --feedback-success: #b5f1dd;
     --primary-color: #22e0a1;
   }

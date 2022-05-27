@@ -2,6 +2,7 @@ import { Avatar, Button, Flex, Td, Text, Tr } from '@chakra-ui/react';
 import { useMemo } from 'react';
 import { FiMoreVertical } from 'react-icons/fi';
 import { Employee } from '../../../../pages';
+import { PopoverActions } from '../../PopoverActions';
 
 interface TBodyTableProps {
   employees: Employee[];
@@ -119,15 +120,7 @@ export function TBodyTable({
 
             <Td paddingRight="1rem" borderBottom="1px solid var(--gray)">
               <Flex justifyContent="flex-end">
-                <Button
-                  padding="0"
-                  backgroundColor="transparent"
-                  _hover={{
-                    backgroundColor: 'transparent'
-                  }}
-                >
-                  <FiMoreVertical fontSize="1.5rem" color="var(--neutral-5)" />
-                </Button>
+                <PopoverActions />
               </Flex>
             </Td>
           </Tr>
