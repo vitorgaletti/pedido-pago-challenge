@@ -1,33 +1,32 @@
-import { Avatar, Button, Flex, Td, Text, Tr } from '@chakra-ui/react';
+import { Avatar, Flex, Td, Text, Tr } from '@chakra-ui/react';
 import { useMemo } from 'react';
-import { FiMoreVertical } from 'react-icons/fi';
 import { Employee } from '../../../../pages';
 import { PopoverActions } from '../../PopoverActions';
 
-interface TBodyTableProps {
-  employees: Employee[];
+interface TBodyEmployeesProps {
+  employees?: Employee[];
   quantityPerPage: number;
   currentPage: number;
   search: string;
   onHandlePage: (currentPage: number) => void;
 }
 
-export function TBodyTable({
+export function TBodyEmployees({
   employees,
   quantityPerPage,
   currentPage,
   search,
   onHandlePage
-}: TBodyTableProps) {
+}: TBodyEmployeesProps) {
   const filteredEmployess = useMemo(() => {
     const lowerCaseSearch = search.toLowerCase();
     onHandlePage(1);
-    return employees.filter(employee =>
+    return employees?.filter(employee =>
       employee.name.toLowerCase().includes(lowerCaseSearch)
     );
   }, [search, employees]);
 
-  const employessPerPage = filteredEmployess.slice(
+  const employessPerPage = filteredEmployess?.slice(
     (currentPage - 1) * quantityPerPage,
     currentPage * quantityPerPage
   );
@@ -35,7 +34,7 @@ export function TBodyTable({
   return (
     <>
       {employees &&
-        employessPerPage.map(employee => (
+        employessPerPage?.map(employee => (
           <Tr key={employee.agent_id}>
             <Td
               padding="1rem"
@@ -120,12 +119,12 @@ export function TBodyTable({
 
             <Td paddingRight="1rem" borderBottom="1px solid var(--gray)">
               <Flex justifyContent="flex-end">
-                <PopoverActions />
+                <PopoverActions isEmployees />
               </Flex>
             </Td>
           </Tr>
         ))}
-      {filteredEmployess.length === 0 && (
+      {filteredEmployess?.length === 0 && (
         <Tr>
           <Td
             fontWeight="600"

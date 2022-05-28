@@ -1,20 +1,21 @@
 import { useState } from 'react';
-import { Box, Heading } from '@chakra-ui/react';
+import { Heading } from '@chakra-ui/react';
 import { Table, Thead, Tbody, Tr, TableContainer } from '@chakra-ui/react';
 import { Employee } from '../../../pages';
 import { Pagination } from './Pagination';
 
-import { TBodyTable } from './TBodyTable';
-import { THeadTable } from './THeadTable';
+import { THeadTable } from '../THeadTable';
+import { TBodyEmployees } from './TBodyEmployees';
 
 interface ContentTableProps {
-  employees: Employee[];
+  employees?: Employee[];
   search: string;
 }
 
-export function ContentTable({ employees, search }: ContentTableProps) {
+export function ListEmployees({ employees, search }: ContentTableProps) {
   const [quantityPerPage, setQuantityPerPage] = useState(6);
   const [currentPage, setCurrentPage] = useState(1);
+
   return (
     <>
       <Heading
@@ -25,7 +26,7 @@ export function ContentTable({ employees, search }: ContentTableProps) {
       >
         Listagem de colaboradores
       </Heading>
-      <TableContainer width="100%" maxWidth="56.375rem">
+      <TableContainer width="100%" maxWidth="56.375rem" h="100%">
         <Table
           width="100%"
           variant="unstyled"
@@ -45,7 +46,7 @@ export function ContentTable({ employees, search }: ContentTableProps) {
             </Tr>
           </Thead>
           <Tbody>
-            <TBodyTable
+            <TBodyEmployees
               employees={employees}
               quantityPerPage={quantityPerPage}
               currentPage={currentPage}

@@ -3,7 +3,7 @@ import { Button, Flex, Select, Stack, Text } from '@chakra-ui/react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 
 interface PaginationProps {
-  employees: Employee[];
+  employees?: Employee[];
   quantityPerPage: number;
   onShowQuantityPerPage: (quantity: number) => void;
   currentPage: number;
@@ -17,7 +17,8 @@ export function Pagination({
   currentPage,
   onHandlePage
 }: PaginationProps) {
-  const totalPages = Math.ceil(employees.length / quantityPerPage);
+  const totalEmployees = employees?.length as number;
+  const totalPages = Math.ceil(totalEmployees / quantityPerPage);
 
   function showQuantityPerPage(quantity: number) {
     onShowQuantityPerPage(quantity);
@@ -42,7 +43,7 @@ export function Pagination({
           lineHeight="24px"
           color="var(--neutral-5)"
         >
-          Monstrando {quantityPerPage} de {employees.length} Registros
+          Monstrando {quantityPerPage} de {employees?.length} Registros
         </Text>
 
         <Stack spacing={3}>
@@ -58,7 +59,7 @@ export function Pagination({
           >
             <option value={6}>6</option>
             <option value={10}>10</option>
-            <option value={employees.length}>{employees.length}</option>
+            <option value={employees?.length}>{employees?.length}</option>
           </Select>
         </Stack>
       </Flex>

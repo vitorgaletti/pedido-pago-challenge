@@ -33,6 +33,8 @@ export const GlobalStyles = css`
   }
 
   body {
+    width: 100%;
+    height: 100vh;
     background-color: var(--white);
     font-family: 'Popins', sans-serif;
     -webkit-font-smoothing: antialiased;

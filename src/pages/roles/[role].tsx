@@ -4,42 +4,27 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { FiArrowLeft } from 'react-icons/fi';
 import { Container } from '../../components/Container';
-import { DetailsEmployee } from '../../components/DetailsEmployee';
+import { RolesAndPermissions } from '../../components/RolesAndPermissions';
 import { api } from '../../service/api';
 
-export interface AgentProps {
-  agent: {
-    id: number;
+interface RoleProps {
+  role: {
     name: string;
-    email: string;
-    phone: {
-      ddd: string;
-      ddi: string;
-      number: string;
-    };
-    document: {
-      type: string;
-      number: string;
-    };
-    birth_date: string;
-    image: string;
     department: string;
-    branch: string;
-    role: string;
-    status: string;
+    group_rules: {};
   };
 }
 
-export default function Agent({ agent }: AgentProps) {
+export default function Role() {
   return (
     <>
       <Head>
-        <title>Detalhes do Colaborador</title>
+        <title>Cargos e permissões</title>
       </Head>
       <Container>
         <Flex flexDirection="column" w="100%" h="100vh" pt="14" pb="3.125rem">
           <Flex justifyContent="center" alignItems="center" gap="1rem">
-            <Link href="/">
+            <Link href="/roles">
               <a>
                 <Flex
                   w="100%"
@@ -64,27 +49,29 @@ export default function Agent({ agent }: AgentProps) {
               w="56.5rem"
               fontWeight="semibold"
               fontSize="2rem"
+              lineHeight="32px"
               color="var(--neutral-black)"
             >
-              Detalhes do colaborador
+              Cargos e permissões
             </Heading>
           </Flex>
-          <DetailsEmployee agent={agent} />
+          <RolesAndPermissions />
         </Flex>
       </Container>
     </>
   );
 }
-
 export const getServerSideProps: GetServerSideProps = async context => {
   const { id } = context?.query;
   try {
-    const response = await api.get(`/agent/${id}`);
-    const data = await response.data.agent;
+    const response = await api.get(`/role/${id}`);
+    const data = await response.data.role;
+
+    console.log(data);
 
     return {
       props: {
-        agent: data
+        role: data
       }
     };
   } catch (error) {

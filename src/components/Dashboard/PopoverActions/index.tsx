@@ -2,22 +2,18 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-  PopoverHeader,
-  PopoverBody,
-  PopoverFooter,
-  PopoverArrow,
-  PopoverCloseButton,
-  PopoverAnchor,
-  Button,
-  Text,
-  Flex
+  Button
 } from '@chakra-ui/react';
-import { FiMoreVertical, FiEye } from 'react-icons/fi';
+import { FiMoreVertical } from 'react-icons/fi';
 
-import { FaRegTrashAlt } from 'react-icons/fa';
-import Link from 'next/link';
+import { PopoverEmployees } from '../ListEmployees/PopoverEmployees';
+import { PopoverRoles } from '../ListRoles/PopoverRoles';
 
-export function PopoverActions() {
+interface PopoverActionsProps {
+  isEmployees?: boolean;
+}
+
+export function PopoverActions({ isEmployees }: PopoverActionsProps) {
   return (
     <Popover>
       <PopoverTrigger>
@@ -42,50 +38,7 @@ export function PopoverActions() {
           outline: '0'
         }}
       >
-        <PopoverBody
-          w="21.25rem"
-          display="flex"
-          flexDirection="column"
-          gap="2.375rem"
-          padding="1.063rem"
-          alignItems="flex-start"
-        >
-          <Flex>
-            <Link href={`/agent/1`}>
-              <a>
-                <Flex alignItems="center" gap="1rem">
-                  <FiEye fontSize="1.5rem" color="var(--neutral-3)" />
-                  <Text
-                    as="p"
-                    fontWeight="500"
-                    fontSize="1rem"
-                    lineHeight="24px"
-                    color="var(--neutral-5)"
-                  >
-                    Ver colaborador
-                  </Text>
-                </Flex>
-              </a>
-            </Link>
-          </Flex>
-
-          <Flex alignItems="center" gap="1rem" opacity="0.5">
-            <FaRegTrashAlt
-              fontSize="1.5rem
-            "
-              color="var(--neutral-3)"
-            />
-            <Text
-              as="p"
-              fontWeight="500"
-              fontSize="1rem"
-              lineHeight="24px"
-              color="var(--neutral-5)"
-            >
-              Excluir
-            </Text>
-          </Flex>
-        </PopoverBody>
+        {isEmployees ? <PopoverEmployees /> : <PopoverRoles />}
       </PopoverContent>
     </Popover>
   );

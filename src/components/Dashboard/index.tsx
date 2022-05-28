@@ -1,18 +1,47 @@
 import { Flex } from '@chakra-ui/react';
-import { ContentTable } from './ContentTable';
+import { ListEmployees } from './ListEmployees';
 
 import { Tab } from './Tab';
 
 import { Employee } from '../../pages/index';
 import { SearchFilter } from './SearchFilter';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { ListRoles } from './ListRoles';
+
+import { useRouter } from 'next/router';
+import Loading from '../Loading';
+import { Role } from '../../pages/roles';
 
 interface DashboardProps {
-  employees: Employee[];
+  roles?: Role[];
+  employees?: Employee[];
+  selectTab?: string;
+  setSelectTab?: (e: React.SyntheticEvent) => void;
 }
 
-export function Dashboard({ employees }: DashboardProps) {
+export function Dashboard({ employees, roles }: DashboardProps) {
+  const router = useRouter();
   const [search, setSearch] = useState('');
+  const [selectTab, setSelectTab] = useState('Colaboradores');
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (router.asPath === '/') {
+      setSelectTab('Colaboradores');
+    } else if (router.asPath === '/roles') {
+      setSelectTab('Cargos');
+    }
+  }, [router.asPath, selectTab]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000 * 1); // 1 second
+  }, [selectTab]);
+
+  const isEmployees = selectTab === 'Colaboradores';
+
   return (
     <Flex
       direction="column"
@@ -27,10 +56,22 @@ export function Dashboard({ employees }: DashboardProps) {
       pt="2.5rem"
       gap="2.5rem"
       marginTop="1.5rem"
+      _last={{
+        gap: '1.5rem'
+      }}
     >
-      <Tab />
-      <SearchFilter search={search} onSearch={setSearch} />
-      <ContentTable employees={employees} search={search} />
+      <Tab onHandleTabSelect={setSelectTab} selectTab={selectTab} />
+      <SearchFilter
+        search={search}
+        onSearch={setSearch}
+        selectTab={selectTab}
+      />
+      {isLoading && <Loading />}
+      {!isLoading && isEmployees ? (
+        <ListEmployees employees={employees} search={search} />
+      ) : (
+        <ListRoles roles={roles} search={search} />
+      )}
     </Flex>
   );
 }

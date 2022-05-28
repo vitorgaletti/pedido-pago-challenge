@@ -5,9 +5,14 @@ import { Form, Fieldset, Legend, InputSearch, Search } from './styles';
 interface SearchFilterProps {
   search: string;
   onSearch: (search: string) => void;
+  selectTab: string;
 }
 
-export function SearchFilter({ search, onSearch }: SearchFilterProps) {
+export function SearchFilter({
+  search,
+  onSearch,
+  selectTab
+}: SearchFilterProps) {
   return (
     <Form>
       <Fieldset>
@@ -16,7 +21,11 @@ export function SearchFilter({ search, onSearch }: SearchFilterProps) {
           <CgSearch fontSize="1.5rem" color="var(--neutral-5)" />
           <InputSearch
             type="search"
-            placeholder="Pesquise por nome ou cpf"
+            placeholder={
+              selectTab === 'Colaboradores'
+                ? 'Pesquise por nome ou cpf'
+                : 'Pesquise por cargo'
+            }
             value={search}
             onChange={e => onSearch(e.target.value)}
           />
