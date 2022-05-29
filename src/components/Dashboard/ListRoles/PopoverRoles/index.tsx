@@ -15,7 +15,7 @@ export function PopoverRoles() {
       alignItems="flex-start"
     >
       <Flex>
-        <Link href={`/agent/1`}>
+        <Link href={`/role/1`}>
           <a>
             <Flex alignItems="center" gap="1rem">
               <FiEye fontSize="1.5rem" color="var(--neutral-3)" />

@@ -37,14 +37,24 @@ export default function Agent({ agent }: AgentProps) {
         <title>Detalhes do Colaborador</title>
       </Head>
       <Container>
-        <Flex flexDirection="column" w="100%" h="100vh" pt="14" pb="3.125rem">
-          <Flex justifyContent="center" alignItems="center" gap="1rem">
+        <Flex
+          flexDirection="column"
+          w="100%"
+          h="100vh"
+          pt="14"
+          pb={['2.5rem', '3.125rem']}
+        >
+          <Flex
+            justifyContent="center"
+            alignItems="center"
+            gap={['0.875rem', '1rem']}
+          >
             <Link href="/">
               <a>
                 <Flex
                   w="100%"
-                  maxWidth="2.25rem"
-                  h="2.25rem"
+                  maxWidth={['2rem', '2.25rem']}
+                  h={['2rem', '2.25rem']}
                   alignItems="center"
                   justifyContent="center"
                   background="var(--neutral-2)"
@@ -53,7 +63,7 @@ export default function Agent({ agent }: AgentProps) {
                 >
                   <Icon
                     as={FiArrowLeft}
-                    fontSize="1.5rem"
+                    fontSize={['1.25rem', '1.5rem']}
                     color="var(--neutral-black)"
                   />
                 </Flex>
@@ -61,10 +71,10 @@ export default function Agent({ agent }: AgentProps) {
             </Link>
             <Heading
               as="h3"
-              w="56.5rem"
-              fontWeight="semibold"
-              fontSize="2rem"
-              color="var(--neutral-black)"
+              w={['18.687rem', '56.5rem']}
+              fontWeight={['bold', 'semibold']}
+              fontSize={['1.25rem', '2rem']}
+              color={['#465953', 'var(--neutral-black)']}
             >
               Detalhes do colaborador
             </Heading>

@@ -22,15 +22,23 @@ export default function Roles({ roles }: RolesProps) {
         <title>Tela de Colaboradores</title>
       </Head>
       <Container>
-        <Flex flexDirection="column" w="100%" h="100%" pt="14" pb="3.125rem">
+        <Flex
+          flexDirection="column"
+          w="100%"
+          h="100%"
+          pt={['2.5rem', '3.5rem']}
+          pb="3.125rem"
+        >
           <Heading
             as="h2"
             w="59.75rem"
             fontFamily="Poppins"
-            fontWeight="semibold"
-            fontSize="2rem"
+            fontWeight={['bold', 'semibold']}
+            fontSize={['24px', '2rem']}
+            lineHeight="24px"
             color="var(--neutral-black)"
             margin="0 auto"
+            pl={['1rem', '0']}
           >
             Organização
           </Heading>

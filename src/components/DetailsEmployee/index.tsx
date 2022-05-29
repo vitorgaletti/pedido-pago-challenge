@@ -9,16 +9,17 @@ export function DetailsEmployee({ agent }: AgentProps) {
       direction="column"
       w="100%"
       maxW="59.75rem"
-      h="calc(100vh - 408.25px)"
+      h={['100vh', 'calc(100vh - 408.25px)']}
       bg="var(--white)"
       boxShadow="0px 4px 8px rgba(165, 171, 179, 0.16)"
       borderRadius="lg"
       alignSelf="center"
-      px="1.5rem"
+      px={['1rem', '1.5rem']}
       pt="2.5rem"
       marginTop="1.5rem"
+      mb={['2.5rem', '0']}
     >
-      <Flex gap="1.5rem">
+      <Flex gap={['1rem', '1.5rem']}>
         <Avatar fontSize="5rem" src={agent.image} />
         <Flex direction="column" gap="0.25rem" justifyContent="center">
           <Text

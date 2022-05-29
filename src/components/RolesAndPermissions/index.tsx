@@ -1,12 +1,17 @@
 import {
+  Box,
   Flex,
   FormControl,
   FormLabel,
   SimpleGrid,
-  Text
+  Text,
+  useMediaQuery
 } from '@chakra-ui/react';
+import { RoleProps } from '../../pages/role/[id]';
+import { ListPermissions } from './ListPermissions';
 
-export function RolesAndPermissions() {
+export function RolesAndPermissions({ role }: RoleProps) {
+  const [isMobile] = useMediaQuery('(max-width: 767px)');
   return (
     <Flex
       direction="column"
@@ -17,8 +22,9 @@ export function RolesAndPermissions() {
       boxShadow="0px 4px 8px rgba(165, 171, 179, 0.16)"
       borderRadius="lg"
       alignSelf="center"
-      px="1.5rem"
+      px={['1rem', '1.5rem']}
       pt="2.5rem"
+      gap={['1.5rem', '2.5rem']}
       marginTop="1.5rem"
     >
       <Text
@@ -31,7 +37,7 @@ export function RolesAndPermissions() {
         Dados do cargo
       </Text>
 
-      <SimpleGrid mt="1.562rem" columns={2} spacing={6}>
+      <SimpleGrid columns={[1, 2]} spacing={6}>
         <Flex w="100%" maxWidth="26.125rem" maxHeight="3.5rem">
           <FormControl
             as="fieldset"
@@ -58,7 +64,7 @@ export function RolesAndPermissions() {
                 lineHeight="24px"
                 color="var(--neutral-5)"
               >
-                SAC
+                {role.department}
               </Text>
             </Flex>
           </FormControl>
@@ -90,12 +96,23 @@ export function RolesAndPermissions() {
                 lineHeight="24px"
                 color="var(--neutral-5)"
               >
-                Analista
+                {role.name}
               </Text>
             </Flex>
           </FormControl>
         </Flex>
       </SimpleGrid>
+
+      {isMobile && (
+        <Box
+          w="100vw"
+          marginX="-1rem"
+          marginY="2.5rem"
+          borderBottom="2px solid var(--gray)"
+        ></Box>
+      )}
+
+      <ListPermissions role={role} />
     </Flex>
   );
 }

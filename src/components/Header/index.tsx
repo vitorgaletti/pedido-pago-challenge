@@ -1,4 +1,5 @@
 import { Flex, Image, Avatar, Text, Box } from '@chakra-ui/react';
+import Link from 'next/link';
 
 export function Header() {
   return (
@@ -23,13 +24,17 @@ export function Header() {
         alignItems="center"
         justifyContent="center"
       >
-        <Image
-          src="/img/logo.svg"
-          alt="Logo"
-          w={['2.625rem', '2.216rem']}
-          h={['2.625rem', '2.168rem']}
-          objectFit="fill"
-        />
+        <Link href="/">
+          <a>
+            <Image
+              src="/img/logo.svg"
+              alt="Logo"
+              w={['2.625rem', '2.216rem']}
+              h={['2.625rem', '2.168rem']}
+              objectFit="fill"
+            />
+          </a>
+        </Link>
       </Box>
       <Flex
         borderLeft={['none', '1px solid var(--gray)']}

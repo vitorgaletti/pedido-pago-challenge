@@ -3,11 +3,17 @@ import { Th } from '@chakra-ui/react';
 interface THeadTableProps {
   group: string;
   padding?: string;
+  width?: string;
 }
 
-export function THeadTable({ group, padding = '1rem' }: THeadTableProps) {
+export function THeadTable({
+  group,
+  padding = '1rem',
+  width = 'auto'
+}: THeadTableProps) {
   return (
     <Th
+      width={width}
       fontWeight="600"
       fontSize="xs"
       textTransform="capitalize"

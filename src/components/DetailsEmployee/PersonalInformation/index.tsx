@@ -36,10 +36,10 @@ export function PersonalInformation({ agent }: AgentProps) {
         Informações pessoais
       </Text>
 
-      <Flex pt="1.5rem" gap="1.5rem" flexWrap="wrap">
+      <Flex pt="1.5rem" gap={['0.5rem', '1.5rem']} flexWrap="wrap">
         <Flex
           w="100%"
-          maxWidth="17.916rem"
+          maxWidth={['19.75rem', '17.916rem']}
           backgroundColor="#F5FAF8"
           border="2px solid var(--neutral-2)"
           borderRadius="0.5rem"
@@ -59,7 +59,7 @@ export function PersonalInformation({ agent }: AgentProps) {
             <Text
               as="span"
               fontWeight="400"
-              fontSize="0.75rem"
+              fontSize="12px"
               lineHeight="14px"
               color="var(--neutral-5)"
             >
@@ -78,7 +78,7 @@ export function PersonalInformation({ agent }: AgentProps) {
         </Flex>
         <Flex
           w="100%"
-          maxWidth="17.916rem"
+          maxWidth={['19.75rem', '17.916rem']}
           backgroundColor="#F5FAF8"
           border="2px solid var(--neutral-2)"
           borderRadius="0.5rem"
@@ -98,7 +98,7 @@ export function PersonalInformation({ agent }: AgentProps) {
             <Text
               as="span"
               fontWeight="400"
-              fontSize="0.75rem"
+              fontSize="12px"
               lineHeight="14px"
               color="var(--neutral-5)"
             >
@@ -109,7 +109,7 @@ export function PersonalInformation({ agent }: AgentProps) {
               fontWeight="600"
               fontSize="0.875rem"
               lineHeight="14px"
-              color="var(--neutral-5)"
+              color={['var(--neutral-black)', 'var(--neutral-5)']}
             >
               +{agent.phone.ddd} {agent.phone.ddi} {formattedNumberPhone}
             </Text>
@@ -117,7 +117,7 @@ export function PersonalInformation({ agent }: AgentProps) {
         </Flex>
         <Flex
           w="100%"
-          maxWidth="17.916rem"
+          maxWidth={['19.75rem', '17.916rem']}
           backgroundColor="#F5FAF8"
           border="2px solid var(--neutral-2)"
           borderRadius="0.5rem"
@@ -137,7 +137,7 @@ export function PersonalInformation({ agent }: AgentProps) {
             <Text
               as="span"
               fontWeight="400"
-              fontSize="0.75rem"
+              fontSize="12px"
               lineHeight="14px"
               color="var(--neutral-5)"
             >
@@ -148,7 +148,7 @@ export function PersonalInformation({ agent }: AgentProps) {
               fontWeight="600"
               fontSize="0.875rem"
               lineHeight="14px"
-              color="var(--neutral-5)"
+              color={['var(--neutral-black)', 'var(--neutral-5)']}
             >
               {formattedBirthDate}
             </Text>

@@ -25,13 +25,19 @@ export default function Home({ employees }: HomeProps) {
         <title>Tela de Colaboradores</title>
       </Head>
       <Container>
-        <Flex flexDirection="column" w="100%" h="100%" pt="14" pb="3.125rem">
+        <Flex
+          flexDirection="column"
+          w="100%"
+          h="100%"
+          pt={['10', '14']}
+          pb={['7.812rem', '5rem']}
+        >
           <Heading
             as="h2"
-            w="59.75rem"
+            w={['22.5rem', '59.75rem']}
             fontFamily="Poppins"
-            fontWeight="semibold"
-            fontSize="2rem"
+            fontWeight={['bold', 'semibold']}
+            fontSize={['1.5rem', '2rem']}
             color="var(--neutral-black)"
             margin="0 auto"
           >

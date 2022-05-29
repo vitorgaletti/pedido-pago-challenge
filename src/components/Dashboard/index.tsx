@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react';
+import { Box, Flex, useMediaQuery } from '@chakra-ui/react';
 import { ListEmployees } from './ListEmployees';
 
 import { Tab } from './Tab';
@@ -24,6 +24,7 @@ export function Dashboard({ employees, roles }: DashboardProps) {
   const [search, setSearch] = useState('');
   const [selectTab, setSelectTab] = useState('Colaboradores');
   const [isLoading, setIsLoading] = useState(false);
+  const [isMobile] = useMediaQuery('(max-width: 767px)');
 
   useEffect(() => {
     if (router.asPath === '/') {
@@ -52,8 +53,8 @@ export function Dashboard({ employees, roles }: DashboardProps) {
       boxShadow="0px 4px 8px rgba(165, 171, 179, 0.16)"
       borderRadius="lg"
       alignSelf="center"
-      px="1.5rem"
-      pt="2.5rem"
+      px={['1rem', '1.5rem']}
+      pt={['1.5rem', '2.5rem']}
       gap="2.5rem"
       marginTop="1.5rem"
       _last={{
@@ -66,6 +67,14 @@ export function Dashboard({ employees, roles }: DashboardProps) {
         onSearch={setSearch}
         selectTab={selectTab}
       />
+      {isMobile && (
+        <Box
+          w="100vw"
+          marginX="-1rem"
+          marginY="1rem"
+          borderBottom="2px solid var(--gray)"
+        ></Box>
+      )}
       {isLoading && <Loading />}
       {!isLoading && isEmployees ? (
         <ListEmployees employees={employees} search={search} />

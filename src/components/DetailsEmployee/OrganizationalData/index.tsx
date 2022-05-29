@@ -26,7 +26,7 @@ export function OrganizationalData({ agent }: AgentProps) {
       >
         Dados organizacionais
       </Text>
-      <SimpleGrid mt="1.562rem" columns={2} spacing={6}>
+      <SimpleGrid mt="1.562rem" columns={[1, 2]} spacing={6}>
         <Flex w="100%" maxWidth="26.125rem" maxHeight="3.5rem">
           <FormControl
             as="fieldset"
@@ -55,7 +55,7 @@ export function OrganizationalData({ agent }: AgentProps) {
               >
                 {agent.department}
               </Text>
-              <FiChevronDown />
+              <FiChevronDown color="var(--neutral-5)" />
             </Flex>
           </FormControl>
         </Flex>
@@ -88,7 +88,7 @@ export function OrganizationalData({ agent }: AgentProps) {
               >
                 {agent.role}
               </Text>
-              <FiChevronDown />
+              <FiChevronDown color="var(--neutral-5)" />
             </Flex>
           </FormControl>
         </Flex>
@@ -121,7 +121,7 @@ export function OrganizationalData({ agent }: AgentProps) {
               >
                 {agent.branch}
               </Text>
-              <FiChevronDown />
+              <FiChevronDown color="var(--neutral-5)" />
             </Flex>
           </FormControl>
         </Flex>
@@ -154,7 +154,7 @@ export function OrganizationalData({ agent }: AgentProps) {
               >
                 {agent.status === 'active' ? 'Ativo' : 'Inativo'}
               </Text>
-              <FiChevronDown />
+              <FiChevronDown color="var(--neutral-5)" />
             </Flex>
           </FormControl>
         </Flex>

@@ -7,29 +7,38 @@ import { Container } from '../../components/Container';
 import { RolesAndPermissions } from '../../components/RolesAndPermissions';
 import { api } from '../../service/api';
 
-interface RoleProps {
+export interface RoleProps {
   role: {
     name: string;
     department: string;
-    group_rules: {};
+    grouprules: {
+      role: string;
+      permissions: {}[];
+    }[];
   };
 }
 
-export default function Role() {
+export default function Role({ role }: RoleProps) {
   return (
     <>
       <Head>
         <title>Cargos e permissões</title>
       </Head>
       <Container>
-        <Flex flexDirection="column" w="100%" h="100vh" pt="14" pb="3.125rem">
+        <Flex
+          flexDirection="column"
+          w="100%"
+          h="100vh"
+          pt={['2.5rem', '3.5rem']}
+          pb="3.125rem"
+        >
           <Flex justifyContent="center" alignItems="center" gap="1rem">
             <Link href="/roles">
               <a>
                 <Flex
                   w="100%"
-                  maxWidth="2.25rem"
-                  h="2.25rem"
+                  maxWidth={['2rem', '2.25rem']}
+                  h={['2rem', '2.25rem']}
                   alignItems="center"
                   justifyContent="center"
                   background="var(--neutral-2)"
@@ -38,7 +47,7 @@ export default function Role() {
                 >
                   <Icon
                     as={FiArrowLeft}
-                    fontSize="1.5rem"
+                    fontSize="24px"
                     color="var(--neutral-black)"
                   />
                 </Flex>
@@ -47,15 +56,15 @@ export default function Role() {
             <Heading
               as="h3"
               w="56.5rem"
-              fontWeight="semibold"
-              fontSize="2rem"
-              lineHeight="32px"
+              fontWeight={['bold', 'semibold']}
+              fontSize={['24px', '2rem']}
+              lineHeight={['24px', '32px']}
               color="var(--neutral-black)"
             >
               Cargos e permissões
             </Heading>
           </Flex>
-          <RolesAndPermissions />
+          <RolesAndPermissions role={role} />
         </Flex>
       </Container>
     </>
@@ -66,8 +75,6 @@ export const getServerSideProps: GetServerSideProps = async context => {
   try {
     const response = await api.get(`/role/${id}`);
     const data = await response.data.role;
-
-    console.log(data);
 
     return {
       props: {
