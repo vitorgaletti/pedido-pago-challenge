@@ -41,160 +41,158 @@ export function CardRoles({ roles, search }: CardEmployeesProps) {
       {filteredRoles
         ?.slice(0, limit ? limit : filteredRoles?.length)
         .map((role, index) => (
-          <>
-            <Accordion
-              allowToggle
-              border="0"
-              borderColor="transparent"
-              key={index}
-            >
-              <AccordionItem>
-                {({ isExpanded }) => (
-                  <>
-                    <Flex
+          <Accordion
+            allowToggle
+            border="0"
+            borderColor="transparent"
+            key={index}
+          >
+            <AccordionItem>
+              {({ isExpanded }) => (
+                <>
+                  <Flex
+                    w="100%"
+                    height={isExpanded ? '230px' : '65px'}
+                    padding="1.5rem 1rem"
+                    flexDirection="column"
+                    border={
+                      isExpanded
+                        ? '2px solid var(--feedback-success)'
+                        : '2px solid var(--gray)'
+                    }
+                    borderRadius="0.5rem"
+                    filter="drop-shadow(0px 4px 8px rgba(165, 171, 179, 0.16))"
+                    overflow="hidden"
+                  >
+                    <Grid
                       w="100%"
-                      height={isExpanded ? '230px' : '65px'}
-                      padding="1.5rem 1rem"
-                      flexDirection="column"
-                      border={
-                        isExpanded
-                          ? '2px solid var(--feedback-success)'
-                          : '2px solid var(--gray)'
-                      }
-                      borderRadius="0.5rem"
-                      filter="drop-shadow(0px 4px 8px rgba(165, 171, 179, 0.16))"
-                      overflow="hidden"
+                      templateColumns="repeat(2, 1fr)"
+                      columnGap="1.593rem"
+                      rowGap="1rem"
+                      pb="1rem"
                     >
-                      <Grid
-                        w="100%"
-                        templateColumns="repeat(2, 1fr)"
-                        columnGap="1.593rem"
-                        rowGap="1rem"
-                        pb="1rem"
-                      >
-                        <Flex direction="column" justifyContent="flex-start">
-                          <Text
-                            as="p"
-                            fontWeight="600"
-                            fontSize="12px"
-                            lineHeight="17px"
-                            color="var(--neutral-5)"
-                          >
-                            Cargo
-                          </Text>
-                          <Text
-                            as="p"
-                            fontWeight="400"
-                            fontSize="12px"
-                            lineHeight="17px"
-                            color="var(--neutral-5)"
-                          >
-                            {role.name}
-                          </Text>
-                        </Flex>
-                        <Flex direction="column" justifyContent="flex-start">
-                          <Text
-                            as="p"
-                            fontWeight="600"
-                            fontSize="12px"
-                            lineHeight="17px"
-                            color="var(--neutral-5)"
-                            display={isExpanded ? 'block' : 'none'}
-                          >
-                            Departamento
-                          </Text>
-                          <Text
-                            as="p"
-                            fontWeight="400"
-                            fontSize="12px"
-                            lineHeight="17px"
-                            color="var(--neutral-5)"
-                            display={isExpanded ? 'block' : 'none'}
-                          >
-                            {role.departament}
-                          </Text>
+                      <Flex direction="column" justifyContent="flex-start">
+                        <Text
+                          as="p"
+                          fontWeight="600"
+                          fontSize="12px"
+                          lineHeight="17px"
+                          color="var(--neutral-5)"
+                        >
+                          Cargo
+                        </Text>
+                        <Text
+                          as="p"
+                          fontWeight="400"
+                          fontSize="12px"
+                          lineHeight="17px"
+                          color="var(--neutral-5)"
+                        >
+                          {role.name}
+                        </Text>
+                      </Flex>
+                      <Flex direction="column" justifyContent="flex-start">
+                        <Text
+                          as="p"
+                          fontWeight="600"
+                          fontSize="12px"
+                          lineHeight="17px"
+                          color="var(--neutral-5)"
+                          display={isExpanded ? 'block' : 'none'}
+                        >
+                          Departamento
+                        </Text>
+                        <Text
+                          as="p"
+                          fontWeight="400"
+                          fontSize="12px"
+                          lineHeight="17px"
+                          color="var(--neutral-5)"
+                          display={isExpanded ? 'block' : 'none'}
+                        >
+                          {role.departament}
+                        </Text>
 
-                          <Flex
-                            alignItems="center"
-                            flexDirection="row"
-                            justifyContent="flex-end"
-                          >
-                            <AccordionButton w="auto" pl="40px">
-                              {isExpanded ? (
-                                <RiArrowUpSLine
-                                  fontSize="24px"
-                                  color="var(--neutral-5)"
-                                />
-                              ) : (
-                                <RiArrowDownSLine
-                                  fontSize="24px"
-                                  color="var(--neutral-5)"
-                                />
-                              )}
-                            </AccordionButton>
-                          </Flex>
+                        <Flex
+                          alignItems="center"
+                          flexDirection="row"
+                          justifyContent="flex-end"
+                        >
+                          <AccordionButton w="auto" pl="40px">
+                            {isExpanded ? (
+                              <RiArrowUpSLine
+                                fontSize="24px"
+                                color="var(--neutral-5)"
+                              />
+                            ) : (
+                              <RiArrowDownSLine
+                                fontSize="24px"
+                                color="var(--neutral-5)"
+                              />
+                            )}
+                          </AccordionButton>
                         </Flex>
+                      </Flex>
 
-                        <Flex direction="column" justifyContent="flex-start">
-                          <Text
-                            as="p"
-                            fontWeight="600"
-                            fontSize="12px"
-                            lineHeight="17px"
-                            color="var(--neutral-5)"
+                      <Flex direction="column" justifyContent="flex-start">
+                        <Text
+                          as="p"
+                          fontWeight="600"
+                          fontSize="12px"
+                          lineHeight="17px"
+                          color="var(--neutral-5)"
+                        >
+                          Colaboradores
+                        </Text>
+                        <Text
+                          as="p"
+                          fontWeight="400"
+                          fontSize="12px"
+                          lineHeight="17px"
+                          color="var(--neutral-5)"
+                        >
+                          {role.agents_quantity}
+                        </Text>
+                      </Flex>
+                    </Grid>
+                    <Link href="/role/1">
+                      <a>
+                        <Flex
+                          w="100%"
+                          border="2px solid var(--feedback-success)"
+                          borderRadius="0.5rem"
+                          gap="0.5rem"
+                          justifyContent="center"
+                          alignItems="center"
+                          paddingY="0.875rem"
+                          cursor="pointer"
+                        >
+                          <Button
+                            border="none"
+                            backgroundColor="transparent"
+                            _hover={{
+                              backgroundColor: 'transparent'
+                            }}
                           >
-                            Colaboradores
-                          </Text>
-                          <Text
-                            as="p"
-                            fontWeight="400"
-                            fontSize="12px"
-                            lineHeight="17px"
-                            color="var(--neutral-5)"
-                          >
-                            {role.agents_quantity}
-                          </Text>
-                        </Flex>
-                      </Grid>
-                      <Link href="/role/1">
-                        <a>
-                          <Flex
-                            w="100%"
-                            border="2px solid var(--feedback-success)"
-                            borderRadius="0.5rem"
-                            gap="0.5rem"
-                            justifyContent="center"
-                            alignItems="center"
-                            paddingY="0.875rem"
-                            cursor="pointer"
-                          >
-                            <Button
-                              border="none"
-                              backgroundColor="transparent"
-                              _hover={{
-                                backgroundColor: 'transparent'
-                              }}
+                            <FiFilePlus fontSize="24px" color="#1DD195" />
+                            <Text
+                              as="p"
+                              fontWeight="600"
+                              fontSize="16px"
+                              lineHeight="24px"
+                              color="var(--neutral-black)"
                             >
-                              <FiFilePlus fontSize="24px" color="#1DD195" />
-                              <Text
-                                as="p"
-                                fontWeight="600"
-                                fontSize="16px"
-                                lineHeight="24px"
-                                color="var(--neutral-black)"
-                              >
-                                Ações
-                              </Text>
-                            </Button>
-                          </Flex>
-                        </a>
-                      </Link>
-                    </Flex>
-                  </>
-                )}
-              </AccordionItem>
-            </Accordion>
-          </>
+                              Ações
+                            </Text>
+                          </Button>
+                        </Flex>
+                      </a>
+                    </Link>
+                  </Flex>
+                </>
+              )}
+            </AccordionItem>
+          </Accordion>
         ))}
       <Button
         onClick={loadMoreCardEmployee}
