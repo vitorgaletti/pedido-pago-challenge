@@ -40,7 +40,7 @@ export default function Agent({ agent }: AgentProps) {
         <Flex
           flexDirection="column"
           w="100%"
-          h="100vh"
+          h={['100%', '100vh']}
           pt="14"
           pb={['2.5rem', '3.125rem']}
         >

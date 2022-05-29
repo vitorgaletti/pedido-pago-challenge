@@ -28,7 +28,7 @@ export default function Role({ role }: RoleProps) {
         <Flex
           flexDirection="column"
           w="100%"
-          h="100vh"
+          h={['100%', '100vh']}
           pt={['2.5rem', '3.5rem']}
           pb="3.125rem"
         >
