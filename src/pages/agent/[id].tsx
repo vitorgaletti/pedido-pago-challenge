@@ -45,7 +45,7 @@ export default function Agent({ agent }: AgentProps) {
           pb={['2.5rem', '3.125rem']}
         >
           <Flex
-            justifyContent="center"
+            justifyContent={['flex-start', 'center']}
             alignItems="center"
             gap={['0.875rem', '1rem']}
           >

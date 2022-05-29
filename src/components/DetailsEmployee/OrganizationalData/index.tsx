@@ -154,7 +154,7 @@ export function OrganizationalData({ agent }: AgentProps) {
               >
                 {agent.status === 'active' ? 'Ativo' : 'Inativo'}
               </Text>
-              <FiChevronDown color="var(--neutral-5)" />
+              <FiChevronDown />
             </Flex>
           </FormControl>
         </Flex>
