@@ -40,9 +40,14 @@ export function CardRoles({ roles, search }: CardEmployeesProps) {
     <Container w="100%" h="100%" m="0 auto" paddingX="0" pb="0.5rem">
       {filteredRoles
         ?.slice(0, limit ? limit : filteredRoles?.length)
-        .map(role => (
+        .map((role, index) => (
           <>
-            <Accordion allowToggle border="0" borderColor="transparent">
+            <Accordion
+              allowToggle
+              border="0"
+              borderColor="transparent"
+              key={index}
+            >
               <AccordionItem>
                 {({ isExpanded }) => (
                   <>

@@ -73,9 +73,7 @@ export function ListEmployees({ employees, search }: ContentTableProps) {
           />
         </>
       ) : (
-        <>
-          <CardEmployees employees={employees} search={search} />
-        </>
+        <CardEmployees employees={employees} search={search} />
       )}
     </>
   );
